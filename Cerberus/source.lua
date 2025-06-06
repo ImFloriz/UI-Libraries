@@ -1,7 +1,7 @@
 _G.JxereasExistingHooks = _G.JxereasExistingHooks or {}
 if not _G.JxereasExistingHooks.GuiDetectionBypass then
-    local CoreGui = game.CoreGui
-    local ContentProvider = game.ContentProvider
+    local CoreGui = cloneref(game:GetService("CoreGui"))
+    local ContentProvider = cloneref(game:GetService("ContentProvider"))
     local RobloxGuis = {"RobloxGui", "TeleportGui", "RobloxPromptGui", "RobloxLoadingGui", "PlayerList", "RobloxNetworkPauseNotification", "PurchasePrompt", "HeadsetDisconnectedDialog", "ThemeProvider", "DevConsoleMaster"}
     
     local function FilterTable(tbl)
@@ -105,7 +105,7 @@ if not _G.JxereasExistingHooks.GuiDetectionBypass then
     _G.JxereasExistingHooks.GuiDetectionBypass = true
 end
 
-local Players = game:GetService("Players")
+local Players = cloneref(game:GetService("Players"))
 local player = Players.LocalPlayer
 
 for _, connection in pairs(getconnections(player.Idled)) do
@@ -115,12 +115,12 @@ for _, connection in pairs(getconnections(player.Idled)) do
 end
 
 
-local TweenService = game:GetService("TweenService")
-local TextService = game:GetService("TextService")
-local UserInputService = game:GetService("UserInputService")
-local GuiService = game:GetService("GuiService")
+local TweenService = cloneref(game:GetService("TweenService"))
+local TextService = cloneref(game:GetService("TextService"))
+local UserInputService = cloneref(game:GetService("UserInputService"))
+local GuiService = cloneref(game:GetService("GuiService"))
 
-local mouse = player:GetMouse()
+local mouse = cloneref(player:GetMouse()) -- necessary? dont think so
 local viewPortSize = workspace.CurrentCamera.ViewportSize
 
 local originalElements = {}
@@ -2069,7 +2069,7 @@ function Library.new(windowName: string, constrainToScreen: boolean?, width: num
 	end)
 
 	heading.Title.Text = windowName or "Cerberus"
-	windowInstance.Parent = game:GetService("CoreGui") -- Change to core later on and add detection bypass
+	windowInstance.Parent = cloneref(game:GetService("CoreGui")) -- Change to core later on and add detection bypass
 	background.Size = UDim2.fromOffset(background.AbsoluteSize.X, background.AbsoluteSize.Y)
 	
 	if width then
