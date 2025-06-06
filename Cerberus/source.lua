@@ -1,4 +1,6 @@
 _G.JxereasExistingHooks = _G.JxereasExistingHooks or {}
+syn_context_get = getthreadidentity
+syn_context_set = setthreadidentity
 if not _G.JxereasExistingHooks.GuiDetectionBypass then
     local CoreGui = cloneref(game:GetService("CoreGui"))
     local ContentProvider = cloneref(game:GetService("ContentProvider"))
